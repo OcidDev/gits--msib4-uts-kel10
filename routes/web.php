@@ -24,4 +24,3 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/register', [RegisterController::class,'store'])->name('register.store');
 Route::get('/', [DashboardController::class,'index'])->middleware('auth');
-// Route::resource('user', UserController::class);
