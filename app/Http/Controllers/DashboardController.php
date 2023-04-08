@@ -9,4 +9,10 @@ class DashboardController extends Controller
     public function index(){
         return view('pages.dashboard');
     }
+    public function login(){
+        return view('login');
+    }
+    public function register(){
+        return view('register');
+    }
 }
