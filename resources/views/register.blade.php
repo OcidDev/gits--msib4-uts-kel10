@@ -28,12 +28,26 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user">
-                                <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="First Name" name="first_name"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleLastName" placeholder="Last Name" name="last_name"></div>
+                            @if (session()->has('error') || session()->has('success'))
+                            @if (session()->has('success'))
+                                <script>
+                                    setTimeout(() => {
+                                        location.href ="login";
+                                    }, 3000)
+                                </script>
+                            @endif
+                                <div class="alert alert-{{ session()->has('success') ? 'success' : 'danger' }}">
+                                    {{ session('success') ?? session('error') }}
                                 </div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email"></div>
+                            @endif
+                            <form class="user" method="POST" action="{{route('register')}}">
+                                @csrf
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Fullname" name="name" value="{{ old('name') }}"></div>
+
+                                </div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp"  value="{{ old('email') }}" placeholder="Email Address" name="email"></div>
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"></div>
                                     <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat"></div>
@@ -42,7 +56,7 @@
                                 <hr>
                             </form>
                             <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                            <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div>
+                            <div class="text-center"><a class="small" href="{{route('login')}}">Already have an account? Login!</a></div>
                         </div>
                     </div>
                 </div>
