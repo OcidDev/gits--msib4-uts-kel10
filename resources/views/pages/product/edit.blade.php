@@ -18,7 +18,7 @@
                 <input type="text" name="price" id="price" value="{{ $products->price }}" class="form-control"><br>
             <label for="">Description</label>
                 <input type="text" name="description" id="description" value="{{ $products->description }}" class="form-control"><br>
-                <select class="from-select @error('categories_id') is-invalid" @enderror aria-label="Default select example" name="categories_id"  id="category_id">
+                <select class="form-select @error('categories_id') is-invalid" @enderror aria-label="Default select example" name="categories_id"  id="category_id">
                     @foreach ($categories as $item)
                         @if ($products->categories_id == $item->id)
                             <option value="{{ $item->id }}" selected>

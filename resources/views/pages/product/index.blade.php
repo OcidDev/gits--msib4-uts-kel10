@@ -33,7 +33,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->price }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->categories_id }}</td>
+                        <td>{{ $item->category->name }}</td>
                         <td>
                             <a href="/product/{{ $item->id }}/edit" class="btn btn-warning">Edit</a>
                             <a href="/product/destroy/{{ $item->id }} " class="btn btn-danger">Delete</a>

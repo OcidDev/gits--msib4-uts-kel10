@@ -16,8 +16,8 @@
                     <label>Description</label><br>
                         <input type="text" name="description" id="description" class="form-control"><br>
                         <br>
-                        <select class="from-select" aria-label="Default select example" name="category_id"  id="category_id">
-                            <option selected>Pilih Categori product</option>
+                        <select class="form-select" aria-label="Default select example" name="category_id"  id="category_id">
+                            <option hidden>Pilih Categori product</option>
                             @foreach ($categories as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
 
