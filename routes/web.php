@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +26,11 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/register', [RegisterController::class,'store'])->name('register.store');
 Route::get('/', [DashboardController::class,'index'])->middleware('auth');
+
+Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/product/add', [ProductController::class, 'create']);
+Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
+Route::get('/product/destroy/{id}', [ProductController::class, 'destroy']);
+
+Route::post('/product', [ProductController::class, 'store']);
+Route::put('/product/{id}',[ProductController::class, 'update']);
