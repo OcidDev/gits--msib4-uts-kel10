@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->midd
 
 Route::post('/product', [ProductController::class, 'store'])->middleware('auth');
 Route::put('/product/{id}',[ProductController::class, 'update'])->middleware('auth');
+
+Route::resource('category', CategoryController::class);

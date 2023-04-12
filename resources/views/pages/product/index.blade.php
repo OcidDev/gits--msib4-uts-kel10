@@ -9,7 +9,7 @@
     <div class="card-header py-3">
         <h2>Halaman Product</h2>
     </div>
-    <div class="card-body">
+    <div class="card">
         <a href="{{ url('/product/add') }}" class="btn btn-success btn-sm" title="Add Category">
             Add New
         </a>
@@ -31,7 +31,7 @@
                     <tr align="center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->price }}</td>
+                        <td>{{ number_format($item->price) }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->category->name }}</td>
                         <td>
