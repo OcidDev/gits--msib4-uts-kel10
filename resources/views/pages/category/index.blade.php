@@ -29,7 +29,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
-                        <td class="d-flex mx-0">
+                        <td class="d-flex justify-content-center">
                             <a class="btn btn-warning" href="{{ route('category.edit', $item->id) }}"
                                 role="button">Edit</a>
                             <form method="post" action="{{ route('category.destroy', $item->id) }}">
