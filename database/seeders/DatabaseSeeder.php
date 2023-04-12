@@ -12,10 +12,16 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    protected $seeders = [
+        CategoriesSeeder::class,
+        ProductsSeeder::class,
+        CartsSeeder::class,
+        TransactionsSeeder::class,
+        // tambahkan seeder lainnya di sini jika diperlukan
+    ];
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         \App\Models\User::factory(1)->create();
-
+        $this->call($this->seeders);
     }
 }
