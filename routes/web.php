@@ -27,10 +27,10 @@ Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/register', [RegisterController::class,'store'])->name('register.store');
 Route::get('/', [DashboardController::class,'index'])->middleware('auth');
 
-Route::get('/product', [ProductController::class, 'index'])->name('product');
-Route::get('/product/add', [ProductController::class, 'create']);
+Route::get('/product', [ProductController::class, 'index'])->name('product')->middleware('auth');
+Route::get('/product/add', [ProductController::class, 'create'])->middleware('auth');
 Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
-Route::get('/product/destroy/{id}', [ProductController::class, 'destroy']);
+Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->middleware('auth');
 
-Route::post('/product', [ProductController::class, 'store']);
-Route::put('/product/{id}',[ProductController::class, 'update']);
+Route::post('/product', [ProductController::class, 'store'])->middleware('auth');
+Route::put('/product/{id}',[ProductController::class, 'update'])->middleware('auth');

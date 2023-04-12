@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('invoice')->unique();
             $table->foreignId('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('total');
             $table->date('transaction_date')->default(date('Y-m-d'));
             $table->timestamps();

@@ -99,6 +99,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         product::destroy($id);
-         return redirect('/product');
+        return redirect('/product');
     }
 }
