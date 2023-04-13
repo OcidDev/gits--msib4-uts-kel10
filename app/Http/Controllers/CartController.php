@@ -45,10 +45,13 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Atribut tidak boleh kosong'
+        ];
         $validated = $request->validate([
             'products_id'   => 'required',
             'qty'           => 'required|numeric|min:1'
-        ]);
+        ],$message);
         $cek = Cart::where('products_id',$request->products_id)->first();
         if($cek){
             Cart::where('id',$cek->id)->update(['qty'=>$cek->qty + $request->qty]);

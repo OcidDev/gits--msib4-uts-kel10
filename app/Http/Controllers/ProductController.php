@@ -38,6 +38,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $message =[
+            'required' =>':attribute tidak boleh kosong',
+        ];
+        $validated = $request->validate([
+            'category_id' => 'required|int',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|int',
+        ],$message);
          Product::create([
             'name'=>$request->input('name'),
             'description'=>$request->input('description'),
@@ -84,6 +93,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message =[
+            'required' =>':attribute tidak boleh kosong',
+        ];
+        $validated = $request->validate([
+            'categories_id' => 'required|int',
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|int',
+        ],$message);
         $product = Product::find($id);
         $input = $request->all();
         $product->update($input);

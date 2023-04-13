@@ -36,10 +36,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Atribut tidak boleh kosong'
+        ];
         $validated = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-        ]);
+        ],$message);
         Category::create($validated);
         return redirect('category');
 
@@ -77,10 +80,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Atribut tidak boleh kosong'
+        ];
         $validated = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-        ]);
+        ],$message);
         Category::find($id)->update($validated);
         return redirect('category');
     }

@@ -16,9 +16,9 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         $products = [
-            ['categories_id' => 1, 'name' => 'Product 1', 'description' => 'Description 1', 'price' => 5000],
-            ['categories_id' => 1, 'name' => 'Product 2', 'description' => 'Description 2', 'price' => 5000],
-            ['categories_id' => 1, 'name' => 'Product 3', 'description' => 'Description 3', 'price' => 5000]
+            ['categories_id' => 1, 'name' => 'Ayam Goreng', 'description' => 'Description 1', 'price' => 5000],
+            ['categories_id' => 1, 'name' => 'Pisang Goreng', 'description' => 'Description 2', 'price' => 5000],
+            ['categories_id' => 2, 'name' => 'Es Teh Anget', 'description' => 'Description 3', 'price' => 5000]
         ];
         DB::table('products')->insert($products);
     }

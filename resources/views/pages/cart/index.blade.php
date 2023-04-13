@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <div class="card mt-4">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger alert-dismissible">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -77,8 +77,9 @@
                                         <td>{{ $item->products->name }}</td>
                                         <td>Rp {{ number_format($item->products->price) }}</td>
                                         <td>
-                                          <input type="number" value="{{ $item->qty }}" style="width:100px !important" class="form-control" name="qty">
-                                          </td>
+                                            <input type="number" value="{{ $item->qty }}" style="width:100px !important"
+                                                class="form-control" name="qty">
+                                        </td>
                                         <td>Rp {{ number_format($item->products->price * $item->qty) }}</td>
                                         <td class="d-flex justify-content-center">
                                             <button type="submit" class="btn btn-warning me-1">Update</button>
