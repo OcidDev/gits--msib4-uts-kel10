@@ -47,7 +47,8 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transactions = Transaction::with('transactions.products','cashier');
+        return view('pages.transaction.show');
     }
 
     /**
