@@ -25,14 +25,12 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             $role  = auth()->user()->role;
-            
+
             // direct sesuai role
             if($role == "admin") {
-                return redirect()->intended('dashboard');  
-            } else if($role == "other") {
-                return redirect()->intended('other');
+                return redirect()->intended('/');
             }
- 
+
             // return redirect()->intended('dashboard');
         } else {
             return back()->with(['error' => 'Email atau Password Salah!']);
@@ -43,11 +41,11 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-    
+
         $request->session()->invalidate();
-    
+
         $request->session()->regenerateToken();
-    
+
         return redirect()->route('login');
     }
 }
