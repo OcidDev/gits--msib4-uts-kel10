@@ -76,15 +76,17 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->products->name }}</td>
                                         <td>{{ number_format($item->products->price) }}</td>
-                                        <td>{{ $item->qty }}</td>
+                                        <td>
+                                          <input type="number" value="{{ $item->qty }}" style="width:100px !important" class="form-control" name="qty">
+                                          </td>
                                         <td>{{ number_format($item->products->price * $item->qty) }}</td>
                                         <td class="d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-warning me-2">Update</button>
+                                            <button type="submit" class="btn btn-warning me-1">Update</button>
                                     </form>
                                     <form method="post" action="{{ route('cart.destroy', $item->id) }}">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit" class="btn btn-danger ms-3">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                     </td>
                             @endforeach
