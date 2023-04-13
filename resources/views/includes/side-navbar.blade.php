@@ -10,6 +10,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ Route('category.index') }}"><i class="fas fa-table"></i><span>Category</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ Route('product') }}"><i class="fas fa-table"></i><span>Product</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ Route('cart.index') }}"><i class="fas fa-table"></i><span>Cart</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ Route('transaction.index') }}"><i class="fas fa-table"></i><span>Transaction</span></a></li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
     </div>
