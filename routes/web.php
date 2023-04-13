@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,5 @@ Route::post('/product', [ProductController::class, 'store'])->middleware('auth')
 Route::put('/product/{id}',[ProductController::class, 'update'])->middleware('auth');
 
 Route::resource('category', CategoryController::class);
+Route::resource('cart', CartController::class);
+Route::resource('transaction', TransactionController::class);

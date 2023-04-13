@@ -6,7 +6,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h2>Halaman Product</h2>
+        <h2>Halaman Category</h2>
     </div>
     <div class="card">
         <a href="{{ route('category.create') }}" class="btn btn-success btn-sm" title="Add Category">
