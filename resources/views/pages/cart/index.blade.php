@@ -75,11 +75,11 @@
                                         @method('PUT')
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->products->name }}</td>
-                                        <td>{{ number_format($item->products->price) }}</td>
+                                        <td>Rp {{ number_format($item->products->price) }}</td>
                                         <td>
                                           <input type="number" value="{{ $item->qty }}" style="width:100px !important" class="form-control" name="qty">
                                           </td>
-                                        <td>{{ number_format($item->products->price * $item->qty) }}</td>
+                                        <td>Rp {{ number_format($item->products->price * $item->qty) }}</td>
                                         <td class="d-flex justify-content-center">
                                             <button type="submit" class="btn btn-warning me-1">Update</button>
                                     </form>
@@ -91,8 +91,18 @@
                                     </td>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end"><b>Total</b></td>
+                                <td colspan="2"><b>Rp {{ number_format($total) }}</b></td>
+                            </tr>
+                        </tfoot>
                     </table>
+                    <div class="text-end">
+                        <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
+                    </div>
                 </div>
             </div>
+
         </div>
     @endsection

@@ -40,4 +40,5 @@ Route::put('/product/{id}',[ProductController::class, 'update'])->middleware('au
 
 Route::resource('category', CategoryController::class);
 Route::resource('cart', CartController::class);
+Route::get('checkout', [CartController::class,'checkout'])->name('checkout')->middleware('auth');
 Route::resource('transaction', TransactionController::class);

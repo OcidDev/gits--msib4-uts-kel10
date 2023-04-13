@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -18,7 +22,9 @@ class CartController extends Controller
     {
         $products = Product::all();
         $carts = Cart::with('products')->get();
-        return view('pages.cart.index',compact('products','carts'));
+        $total = Cart::join('products', 'carts.products_id', '=', 'products.id')
+            ->sum(DB::raw('carts.qty * products.price'));
+        return view('pages.cart.index',compact('products','carts','total'));
     }
 
     /**
@@ -101,5 +107,34 @@ class CartController extends Controller
         $deleted = Cart::find($id);
         $deleted->delete();
         return back();
+    }
+
+    public function checkout()
+    {
+        $cashier = Auth::user()->id;
+        // Ambil data dari table cart
+        $carts = Cart::all();
+        // dd('cart');
+        $total = Cart::join('products', 'carts.products_id', '=', 'products.id')->sum(DB::raw('carts.qty * products.price'));
+        //insert table tansaksi
+        $transaction = new Transaction;
+        $transaction->invoice = rand(1000, 9999); // Generate random invoice number
+        $transaction->users_id = auth()->user()->id; // Get authenticated user's ID
+        $transaction->total = $total; // Set total amount from previous calculation
+        $transaction->transaction_date = date('Y-m-d');
+        $transaction->save();
+
+        foreach($carts as $cart) {
+            TransactionDetail::create([
+                'transactions_id' => $transaction->id,
+                'products_id' => $cart->products_id,
+                'qty' => $cart->qty,
+            ]);
+
+            // Delete the cart item
+            $cart->delete();
+        //insert data ke tabel detail transaksi
+        }
+        return redirect('cart');
     }
 }
