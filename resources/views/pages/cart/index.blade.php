@@ -99,9 +99,11 @@
                             </tr>
                         </tfoot>
                     </table>
+                    @if ($total > 0)
                     <div class="text-end">
                         <a href="{{ route('checkout') }}" class="btn btn-primary">Checkout</a>
                     </div>
+                    @endif
                 </div>
             </div>
 
