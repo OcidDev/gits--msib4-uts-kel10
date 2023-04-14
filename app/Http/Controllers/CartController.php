@@ -138,6 +138,6 @@ class CartController extends Controller
             $cart->delete();
         //insert data ke tabel detail transaksi
         }
-        return redirect('cart');
+        return redirect()->route('transaction.show', $transaction->id);
     }
 }
